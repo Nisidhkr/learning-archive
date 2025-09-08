@@ -1,0 +1,14 @@
+# Visual Studio caches
+.vs/
+*.ipch
+
+# Python virtual environments
+.venv/
+__pycache__/
+*.pyc
+
+# Build artifacts
+*.obj
+*.exe
+*.log
+*.zip
