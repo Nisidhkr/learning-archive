@@ -6,6 +6,7 @@ void noFrom1toN(int n){
     }
     
     noFrom1toN(n-1);
+
     cout << n<<endl;
     
 
