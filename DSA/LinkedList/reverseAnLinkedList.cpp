@@ -6,11 +6,28 @@ struct Node {
     Node *prev;
     Node(int d){
         data = d;
-        next = prev = NULL;
+        next =  NULL;
 
     }
 }
 Node *reverceLinkedList(Node *head){
+    Node *curr = head;
+    Node *prev = NULL;
+    if (head == NULL){
+        return NULL;
+    }
+    if (head->next ==NULL){
+        return head;
+    }
+    while (curr!=NULL)
+    {
+        next = curr->next ;
+        curr->next =prev;
+        prev = curr;
+        curr = next;
+        /* code */
+    }
+    return prev;
     
 
 
