@@ -9,5 +9,6 @@
     "files.associations": {
         "*.dbclient-js": "javascript",
         "iostream": "cpp"
-    }
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
 }
