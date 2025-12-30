@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "threadLifecycle",
+            "request": "launch",
+            "mainClass": "threadLifecycle",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Test",
             "request": "launch",
             "mainClass": "Test",
