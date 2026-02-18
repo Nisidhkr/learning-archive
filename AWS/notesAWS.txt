@@ -1,0 +1,463 @@
+# AWS Connection
+
+## SSH Key Connection to VM Instance
+
+To connect to an AWS EC2 instance using SSH:- ssh -i "key-for-learning-docker.pem" ubuntu@ec2-13-49-102-10.eu-north-1.compute.amazonaws.com
+To connect to an AWS EC2 instance using SSH but by forwarding port:-ssh -i ~/key-for-learning-docker.pem -L 8080:localhost:8080 ubuntu@13.61.64.150
+difference between both of them is in:- https://chatgpt.com/c/6967bbca-5554-8321-9ccd-5ecf3cd8dd7b
+
+AMI
+
+An Amazon Machine Image (AMI) is a pre-configured template
+that provides the necessary information to launch an EC2
+instance in AWS.
+
+It includes:
+. Operating system (e.g., Linux, Windows)
+· Application server (e.g., Apache, Nginx)
+· Pre-installed software and configurations
+
+With an AMI, you can launch new EC2 instances with
+a consistent, predefined configuration.
+
+You can also create custom AMIs to include specific
+software or settings, allowing for quick replication of
+environments.
+
+
+Types of AWS AMIs
+
+. Public AMIs: Available to all AWS users. Useful for basic use
+cases like popular operating systems (e.g., Ubuntu, CentOS).
+
+. Private AMIs: Created by a user and only available within that
+account or shared with specific accounts.
+
+. Paid AMIs/Marketplace AMIs: Provided by third parties
+through AWS Marketplace, offering software like databases,
+web servers, or pre-configured environments.
+
+
+UseCase of Paid AMIs
+
+Benefits:
+Rapid Deployment: The LAMP Stack is pre-configured, eliminating
+the need to manually install and configure Apache, MySQL, and
+PHP.
+. Scalability and Load Balancing: Running on AWS enables quick
+scaling to match website traffic, while Elastic Load Balancer helps
+in distributing requests.
+. Cost Efficiency: You only pay for the infrastructure and the
+software according to your usage.
+
+
+Ec2 image builder
+
+· Automate VM or Image Creation
+creation, testing, and deployment of AMIs
+
+. Can be configured to run at regular intervals
+(e.g., daily, weekly, or monthly)
+
+· Free
+
+ELB (Elastic Load Balancer) ,ASG (Auto scaling Groups)
+
+Scalability
+
+
+Vertical Scalability (Scaling Up)
+. Vertical Scalability means adding more power (CPU, RAM) to
+your existing server.
+. Ex: t2.micro to m5.large
+
+Horizontal Scalability (Scaling Out)
+. Horizontal Scalability means adding more instances (servers)
+to distribute the load.
+. You can add more EC2 instances behind a load balancer
+
+High Availability (HA)
+
+· High Availability (HA) means keeping your
+service up and running with minimal downtime,
+so it's always accessible to users.
+
+. Ex: running resources in multiple AZs
+
+
+Elasticity
+
+. Elasticity means the ability to automatically
+adjust resources as the demand changes-
+adding more when needed and removing when
+it's no longer necessary.
+
+. Ex: ASG
+
+. Distributes Traffic: It splits incoming traffic across multiple servers so no single
+server gets overloaded.
+
+. Improves Availability: If one server goes down, the load balancer automatically
+sends traffic to the working servers, ensuring your application stays available.
+
+. Scales Resources: It helps manage high demand by adding more servers during
+peak times and distributing the load.
+
+. Single point of Access need to be expose.
+. HA across AZs
+
+
+AWS offers different types of load balancers depending on your needs.
+
+. Application Load Balancer (ALB) is perfect for web applications,
+handling complex HTTP and HTTPS requests (Layer 7)
+
+. Network Load Balancer (NLB) is designed for high-performance and
+low latency, perfect for TCP/UDP traffic (ex: gaming, financial apps)
+(Layer 4)
+
+. Gateway Load Balancer (GWLB) helps deploy, scale, and manage
+third-party virtual appliances, such as firewalls and monitoring
+solutions. 
+
+
+
+ASG (Auto Scaling Groups)
+AWS ASG (Auto Scaling Group) is a service that
+automatically adds or removes EC2 instances based
+on demand to ensure your application is always
+available.
+
+It helps scale up when more capacity is needed and
+scale down during low usage to save costs, keeping
+the right number of servers running at all times.
+
+Functions
+
+. Automatic Scaling: Scale the number of EC2 instances up or down
+based on demand.
+. Maintain Instance Health: Replace unhealthy instances automatically
+to ensure reliability.
+
+. Use Scaling Policies: Set rules for scaling based on metrics like CPU
+usage or request count.
+· Ensure Availability: Always keep a defined number of instances
+running to meet application needs.
+
+. Schedule Scaling: Pre-configure scaling activities for specific times
+(e.g., traffic peaks).
+
+. Distribute Instances: Deploy instances across multiple
+Availability Zones for high availability.
+
+. Integrate with ELB: Attach instances to an Elastic Load
+Balancer to automatically balance traffic.
+
+. Optimize Costs: Scale down during low demand to save on
+infrastructure costs.
+
+Steps to Create ASG
+
+. Launch Template or Configuration
+. Create Auto Scaling Group
+. Select VPC and Subnets
+. Attach Load Balancer (Optional)
+. Configure Scaling Policies
+. Health Checks
+. Add Notifications (Optional)
+. Review and Create
+
+
+AWS S3 (Simple Storage Service) is a cloud-
+based storage service that allows you to
+store, manage, and retrieve large amounts of
+data like files, images, videos, and backups
+securely and at scale.
+
+It provides highly reliable, scalable object
+storage, making your data accessible from
+anywhere, anytime, via the internet.
+
+· Store data as objects
+. Globally unique name
+
+· Region specific
+. Each object within a bucket is stored as a key-
+value pair
+o key is the object's name (which can contain slashes /, mimicking directory structure)
+o value is the content of the object (the file/data itself).
+
+Maximum Object Size:
+. 5 TB (Terabytes) is the maximum size for a
+single object in Amazon S3.
+
+Multipart upload is recommended for objects
+larger than 5 GB (split the file into smaller
+parts and upload them separately).
+
+
+S3 Bucket Policies
+
+JSON-based access control policies that you attach directly to
+an S3 bucket to manage permissions for accessing the bucket
+and its objects.
+
+They allow you to define who can access the data and what
+actions they can perform, such as read, write, or delete,
+enabling fine-grained control over the security of your data
+stored in S3.
+
+o
+
+. Write or paste your JSON policy in the Bucket Policy
+editor.
+
+. You can use AWS's Policy Generator to create a custom
+policy, or you can manually write the policy in JSON
+format.
+GetObject: Used to retrieve or download files from an
+S3 bucket.
+PutObject: Used to upload or add files into an S3
+bucket. 
+
+S3 Versioning
+
+It allows you to keep multiple versions of an object in the same
+bucket, providing protection against accidental deletions or
+overwrites.
+
+When versioning is enabled, S3 stores every version of an
+object, allowing you to recover older versions if needed,
+making it ideal for data safety and backup.
+
+
+S3 Replication
+
+It allows you to automatically copy objects from one S3 bucket
+to another, which can be
+. within the same region (Same-Region Replication - SRR) or
+. in different regions (Cross-Region Replication - CRR).
+
+It's commonly used for compliance, redundancy, and to
+improve data access performance by maintaining copies
+closer to your users.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+docker file have some instruction to create image
+how to create a docker file 
+docker file should have some set of instruction
+ because of these insturctio our application works 
+
+docker images should have application code, libraries, info of the operating system , framework and tools, packages 
+
+
+dockerfile-> image -> continer
+for eg we have to run java application we need to have enviornment in which java is installed 
+first 
+we need to have base image which give all required tools and libraries
+FROM image name(openjdk):image tag(17-jdk-alpine)
+
+second
+we need to create a working directory to keep the source code 
+WORKDIR /app(app is the folder name)
+
+third 
+we will copy every thing that is keept in our source or host to my continer
+COPY (path from which we will copy) (to the path where we will copy)
+
+fourth
+whenever we need to run a command we use run means we are compiling the application code 
+RUN javac src/Main.java
+
+fifth
+run the application 
+
+CMD ["java",className("main")]
+
+first four steps are used to built the contianer 
+but the fifth step is a special command for ones the container is built to run the contianer from above . without fifth command also the container will be built  basiclly from the fifth point we are injecting the command inside the continer we can override it also when we use docker run command  similarly we also have ENTRYPOINT entrypoint cannot be overridden but cmd can be overidden
+
+conmmand to create docker image form docker file is docker build -t(for naming) javaApp .(we use dot for contxt as docker file is in the same directory ) 
+
+imp point wheneveve the source code changes  the n we will have to change docker file also then only the changes will reflect
+
+
+
+
+
