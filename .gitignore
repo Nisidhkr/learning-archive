@@ -13,4 +13,8 @@ __pycache__/
 *.log
 *.zip
 
-**/node_modules/
+**/node_modules/.terraform/
+*.zip
+.terraform/
+*.zip
+.terraform/
