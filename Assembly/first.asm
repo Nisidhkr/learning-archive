@@ -1,12 +1,10 @@
 .data
-msg:    .asciiz "\nhello\n"
+ch: .byte 'D'
 
 .text
-.globl main
-
 main:
-    li $v0, 4
-    la $a0, msg
+    lb $a0, ch
+    li $v0, 11
     syscall
 
     li $v0, 10
