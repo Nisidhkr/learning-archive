@@ -18,3 +18,15 @@ __pycache__/
 .terraform/
 *.zip
 .terraform/
+
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
