@@ -30,3 +30,8 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+
+# Terraform generated files
+.terraform/
+*.tfstate
+*.tfstate.*
