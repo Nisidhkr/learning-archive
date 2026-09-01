@@ -1,14 +1,23 @@
 {
-    "java.project.sourcePaths": [
-        "java/java_on_vs_code",
-        "java/afteropps54",
-        "java"
-    ],
-    "java.debug.settings.onBuildFailureProceed": true,
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
     "C_Cpp.errorSquiggles": "disabled",
+    "code-runner.runInTerminal": true,
+    "code-runner.fileDirectoryAsCwd": true,
+    "code-runner.executorMap": {
+        "cpp": "cd \"$dir\" && /usr/bin/g++ -g \"$fileName\" -o \"$fileNameWithoutExt\" && \"$dir/$fileNameWithoutExt\""
+    },
+    "terminal.integrated.profiles.linux": {
+        "Ubuntu WSL": {
+            "path": "/bin/bash",
+            "args": [
+                "-l"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "Ubuntu WSL",
     "files.associations": {
         "*.dbclient-js": "javascript",
         "iostream": "cpp"
-    },
-    "java.compile.nullAnalysis.mode": "automatic"
+    }
 }

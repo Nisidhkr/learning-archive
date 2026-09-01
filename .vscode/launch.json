@@ -2,35 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "myThread",
-            "request": "launch",
-            "mainClass": "myThread",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "threadLifecycle",
-            "request": "launch",
-            "mainClass": "threadLifecycle",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "Test",
-            "request": "launch",
-            "mainClass": "Test",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "multipleThreading_86",
-            "request": "launch",
-            "mainClass": "threading.multipleThreading_86",
-            "projectName": ""
-        },
-        {
-            "name": "Run C++ File",
+            "name": "Debug active C++ file",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
@@ -38,8 +10,9 @@
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": true,
-            "preLaunchTask": "build active file",
+            "externalConsole": false,
+            "console": "integratedTerminal",
+            "preLaunchTask": "Build active C++ file",
             "MIMode": "gdb",
             "miDebuggerPath": "/usr/bin/gdb",
             "logging": {
