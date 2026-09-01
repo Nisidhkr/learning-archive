@@ -35,3 +35,7 @@ yarn-error.log
 .terraform/
 *.tfstate
 *.tfstate.*
+
+# Private keys
+testgdgbu_id_key.txt
+testgdgbu_id_key.txt.pub
